@@ -1,8 +1,6 @@
 package courseorganizer
 
-class Course {
-	
-
+class Days {
 
     static constraints = {
     }
