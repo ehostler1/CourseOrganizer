@@ -1,6 +1,6 @@
 package courseorganizer
 
-class Class {
+class AClass {
 	
 	CourseReferenceNumber crn
 	Course course

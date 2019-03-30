@@ -1,7 +1,6 @@
 package courseorganizer
 
 class CourseReferenceNumber {
-	static belongsTo = [class:Class]
 	
 	Integer crn
 
