@@ -8,7 +8,7 @@ class AClass {
 	Days days
 	Time beginTime
 	Time endTime
-	String Instructor
+	String instructor
 	Date beginDate
 	Date endDate
 	Location location
