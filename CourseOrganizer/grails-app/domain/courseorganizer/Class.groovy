@@ -3,9 +3,7 @@ package courseorganizer
 class Class {
 	
 	CourseReferenceNumber crn
-	Subject subject
 	Course course
-	Section section
 	String title
 	Days days
 	Time beginTime
