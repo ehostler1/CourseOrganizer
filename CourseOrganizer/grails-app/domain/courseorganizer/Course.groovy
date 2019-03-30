@@ -1,6 +1,7 @@
 package courseorganizer
 
 class Course {
+	static belongsTo = [aClass:AClass]
 	
 	String subject
 	Integer courseNumber

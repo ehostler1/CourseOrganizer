@@ -1,11 +1,12 @@
 package courseorganizer
 
 class AClass {
+	static hasOne = [crn:CourseReferenceNumber,
+		course:Course,
+		days:Days]
 	
-	CourseReferenceNumber crn
-	Course course
+	
 	String title
-	Days days
 	Time beginTime
 	Time endTime
 	String instructor
