@@ -1,9 +1,10 @@
 package courseorganizer
 
 class ClassCombinations {
-	static hasMany = [combinations:PossibleCombination]
+	static hasMany = [combination:PossibleCombination]
 	
 
     static constraints = {
+		combination unique: true
     }
 }

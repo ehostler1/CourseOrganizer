@@ -43,7 +43,8 @@ class AClass {
 		
 		section max: 999
 		section min: 100
-		section unique: true
+		
+		title size: 5..50
 		
 		days inList: ["M","T","W","R","S","MWF","TR","MW"]
 		

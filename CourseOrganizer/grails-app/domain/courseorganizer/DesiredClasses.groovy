@@ -2,7 +2,7 @@ package courseorganizer
 
 class DesiredClasses {
 
-	static hasMany = [desiredClasses:AClass]
+	static hasMany = [desiredClass:AClass]
 	
     static constraints = {
     }
