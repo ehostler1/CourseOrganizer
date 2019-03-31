@@ -34,7 +34,7 @@ class AClassServiceSpec extends Specification {
         setupData()
 
         when:
-        List<AClass> AClassList = AClassService.list(max: 2, offset: 2)
+        List<ClassInstance> AClassList = AClassService.list(max: 2, offset: 2)
 
         then:
         AClassList.size() == 2
@@ -65,10 +65,10 @@ class AClassServiceSpec extends Specification {
     void "test save"() {
         when:
         assert false, "TODO: Provide a valid instance to save"
-        AClass AClass = new AClass()
+        ClassInstance AClass = new ClassInstance()
         AClassService.save(AClass)
 
         then:
-        AClass.id != null
+        ClassInstance.id != null
     }
 }

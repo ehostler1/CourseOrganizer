@@ -3,7 +3,7 @@ package courseorganizer
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 
-class AClassSpec extends Specification implements DomainUnitTest<ClassInstance> {
+class ClassInstanceListSpec extends Specification implements DomainUnitTest<ClassInstanceList> {
 
     def setup() {
     }

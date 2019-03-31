@@ -3,7 +3,7 @@ package courseorganizer
 class HomeController {
 
     def index() {
-		respond([name: session.name ?: 'User', classTotal: AClass.count()])
+		respond([name: session.name ?: 'User', classTotal: ClassInstance.count()])
 	}
 	
 	def updateName(String name) {

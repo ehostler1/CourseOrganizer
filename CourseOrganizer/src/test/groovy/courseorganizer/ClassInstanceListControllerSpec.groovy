@@ -1,9 +1,9 @@
 package courseorganizer
 
-import grails.testing.gorm.DomainUnitTest
+import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 
-class AClassSpec extends Specification implements DomainUnitTest<ClassInstance> {
+class ClassInstanceListControllerSpec extends Specification implements ControllerUnitTest<ClassInstanceListController> {
 
     def setup() {
     }

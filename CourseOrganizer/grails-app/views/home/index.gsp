@@ -13,13 +13,13 @@
             <div class="message" role="status">${flash.message}</div>
         </g:if>
 
-        <p>There are ${aClassTotal} classes in the database.</p>
+        <p>There are ${classTotal} classes in the database.</p>
 
         <ul>
-        <g:each in="${courseorganizer.AClass.list()}" var="aClass">
+        <g:each in="${courseorganizer.ClassInstance.list()}" var="classInstance">
             <li>
-                <g:link controller="aClass" action="show" id="${aClass.id}">
-                    ${aClass.title}
+                <g:link controller="classInstance" action="show" id="${classInstance.id}">
+                    ${classInstance.title}
                 </g:link>
             </li>
         </g:each>

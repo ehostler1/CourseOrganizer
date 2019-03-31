@@ -2,17 +2,17 @@ package courseorganizer
 
 import grails.gorm.services.Service
 
-@Service(AClass)
+@Service(ClassInstance)
 interface AClassService {
 
-    AClass get(Serializable id)
+    ClassInstance get(Serializable id)
 
-    List<AClass> list(Map args)
+    List<ClassInstance> list(Map args)
 
     Long count()
 
     void delete(Serializable id)
 
-    AClass save(AClass AClass)
+    ClassInstance save(ClassInstance AClass)
 
 }
