@@ -1,9 +1,9 @@
 package courseorganizer
 
-import grails.testing.gorm.DomainUnitTest
+import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 
-class LocationSpec extends Specification implements DomainUnitTest<Location> {
+class ClassCombinationsControllerSpec extends Specification implements ControllerUnitTest<ClassCombinationsController> {
 
     def setup() {
     }
