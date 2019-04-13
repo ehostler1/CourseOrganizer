@@ -2,8 +2,10 @@ package courseorganizer
 
 class HomeController {
 
+	ClassInstanceService classInstanceService
+	
     def index() {
-		respond([name: session.name ?: 'User', classTotal: ClassInstance.count()])
+		respond name: session.name ?: 'User', model:[classInstanceCount: classInstanceService.count()], classInstanceService.list(params)
 	}
 	
 	def updateName(String name) {

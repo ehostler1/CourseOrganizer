@@ -20,7 +20,10 @@
             <a class="navbar-brand" href="/#">
                 <i class="fa grails-icon">
                     <asset:image src="Triforce.svg"/>
-                </i> Course Organizer
+                </i> Home
+            </a>
+            <a class="navbar-brand" href="/classInstance/create">
+                Add Class
             </a>
         </div>
         <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">

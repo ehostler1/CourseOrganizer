@@ -13,8 +13,6 @@
             <div class="message" role="status">${flash.message}</div>
         </g:if>
 
-        <p>There are ${classTotal} classes in the database.</p>
-
         <g:form action="updateName" style="margin: 0 auto; width:320px"> 
             <g:textField name="name" value="" />
             <g:submitButton name="Update name" />
@@ -23,18 +21,14 @@
     </section>
 </div>
 
-<ul>
-	<g:each in="${courseorganizer.ClassInstance.list()}" var="classInstance">
-		<li>
-			<g:link controller="classInstance" action="show" id="${classInstance.id}">
-				${classInstance.crn}
-			</g:link>
-			&nbsp; ${classInstance.subject}${classInstance.courseNumber}.${classInstance.section} &nbsp; ${classInstance.title} &nbsp; ${classInstance.days} &nbsp;
-			${classInstance.beginHour}:${classInstance.beginMinute}${classInstance.beginMeridiem}-${classInstance.endHour}:${classInstance.endMinute}${classInstance.endMeridiem}
-			&nbsp; ${classInstance.building} ${classInstance.room} &nbsp; ${classInstance.instructor} &nbsp; ${classInstance.beginDate}-${classInstance.endDate}
-		</li>
-	</g:each>
-</ul>
+<div id="list-classInstance" class="content scaffold-list" role="main">
+	<h1>Available Classes (total: ${classInstanceCount})</h1>
+    <f:table collection="${classInstanceList}" properties="crn, course, title, days, beginTime, endTime, location, instructor, beginDate, endDate"/>
+
+    <div class="pagination">
+         <g:paginate total="${classInstanceCount ?: 0}" />
+    </div>
+</div>
 
 </body>
 </html>
