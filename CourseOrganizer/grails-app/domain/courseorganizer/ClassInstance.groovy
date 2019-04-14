@@ -39,6 +39,7 @@ class ClassInstance {
 	String endDate
 
     static constraints = {
+		
 		crn max: 30000
 		crn min: 10000
 		crn unique: true
@@ -125,22 +126,38 @@ class ClassInstance {
 		this.setEndTime(end)
 		
 		//update location
-		this.setLocation(this.building + " " + this.room)
+		if(this.room != null) {
+			this.setLocation(this.building + " " + this.room)
+		}
+		else {
+			this.setLocation(this.building)
+		}
 		
 		//update begin and end dates
-		begin = new String()
-		end = new String()
+		Integer month
+		Integer day
+		Integer year
 		
-		Integer month = this.startDate.calendarDate.getMonth()
-		Integer day = this.startDate.calendarDate.getDayOfMonth()
-		Integer year = this.startDate.calendarDate.getYear()
+		if(this.startDate != null) {
+			month = this.startDate.calendarDate.getMonth()
+			day = this.startDate.calendarDate.getDayOfMonth()
+			year = this.startDate.calendarDate.getYear()
+			
+			this.setBeginDate(month + " / " + day + " / " + year)
+		}
+		else {
+			this.setBeginDate("")
+		}
 		
-		this.setBeginDate(month + " / " + day + " / " + year)
-		
+		if(this.finishDate != null) {
 		month = this.finishDate.calendarDate.getMonth()
 		day = this.finishDate.calendarDate.getDayOfMonth()
 		year = this.finishDate.calendarDate.getYear()
 		
 		this.setEndDate(month + " / " + day + " / " + year)
+		}
+		else {
+			this.setEndDate("")
+		}
 	}
 }
