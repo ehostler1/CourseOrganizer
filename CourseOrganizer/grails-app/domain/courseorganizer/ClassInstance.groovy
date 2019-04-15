@@ -9,6 +9,7 @@ class ClassInstance {
 	Integer courseNumber
 	Integer sectionNumber
 	
+	//display item for subject courseNumber and sectionNumber
 	String course
 	
 	String title
@@ -22,12 +23,14 @@ class ClassInstance {
 	Integer endMinute
 	String endMeridiem
 	
+	//display item for time
 	String beginTime
 	String endTime
 	
 	String building
 	Integer room
 	
+	//display item for building and room
 	String location
 	
 	String instructor
@@ -35,8 +38,14 @@ class ClassInstance {
 	Date startDate
 	Date finishDate
 	
+	//display item for dates
 	String beginDate
 	String endDate
+	
+	//values for combination generation
+	String subjectCourseNumber
+	Integer beginTimeMinutes
+	Integer endTimeMinutes
 
     static constraints = {
 		
@@ -90,6 +99,17 @@ class ClassInstance {
 		beginDate nullable: true
 		endDate display: false
 		endDate nullable: true
+		
+		//constraints for values for combination generation
+		subjectCourseNumber display: false
+		subjectCourseNumber nullable: true
+		subjectCourseNumber size: 6..6
+		beginTimeMinutes display: false
+		beginTimeMinutes nullable: true
+		beginTimeMinutes range: 1..1440
+		endTimeMinutes display: false
+		endTimeMinutes nullable: true
+		endTimeMinutes range: 1..1440
 	}
 	
 	def updateComplexItems() {
@@ -159,5 +179,29 @@ class ClassInstance {
 		else {
 			this.setEndDate("")
 		}
+		
+		//update subjectCourseNumber
+		this.setSubjectCourseNumber(this.subject + this.courseNumber)
+		
+		//update begin and end time minutes
+		Integer minutes = 0
+		
+		if(this.beginMeridiem == "PM") {
+			minutes += 720
+		}
+		minutes += this.beginHour * 60
+		minutes += this.beginMinute
+		
+		this.setBeginTimeMinutes(minutes)
+		
+		minutes = 0
+		
+		if(this.endMeridiem == "PM") {
+			minutes += 720
+		}
+		minutes += this.endHour * 60
+		minutes += this.endMinute
+		
+		this.setEndTimeMinutes(minutes)
 	}
 }
