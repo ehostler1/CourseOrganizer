@@ -2,7 +2,6 @@ package courseorganizer
 
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
-import java.util.ListIterator
 
 class HomeController {
 
@@ -118,7 +117,7 @@ class HomeController {
 		return seperatedClasses;
 	}
 	
-	def void tryCombination(List<ClassInstance> currentCombination) {
+	def void tryCombination(ArrayList<ClassInstance> currentCombination) {
 		boolean isValid = true
 		for(int classOneIndex = 0; classOneIndex < currentCombination.size() ; classOneIndex++) {
 			
@@ -135,7 +134,39 @@ class HomeController {
 		
 		if(isValid) {
 			System.out.println("Attempting to add valid combination to database:"+ currentCombination.toString());
-			def validCombination = new CombinationInstance(combinationID: (Integer)combinationInstanceService.count() + 1, combinationClasses: currentCombination);
+			
+			//create crn, course, title, days, beginTime, endTime, and location lists
+			List<Integer> currentCombinationCrns = new ArrayList<Integer>();
+			List<String> currentCombinationCourses = new ArrayList<String>();
+			List<String> currentCombinationTitles = new ArrayList<String>();
+			List<String> currentCombinationDays = new ArrayList<String>();
+			List<String> currentCombinationBeginTimes = new ArrayList<String>();
+			List<String> currentCombinationEndTimes = new ArrayList<String>();
+			List<String> currentCombinationLocations = new ArrayList<String>();
+			
+			for(int i = 0 ; i < currentCombination.size() ; i++) {
+				
+				currentCombinationCrns.add(currentCombination.get(i).getCrn());
+				currentCombinationCourses.add(currentCombination.get(i).getCourse());
+				currentCombinationTitles.add(currentCombination.get(i).getTitle());
+				currentCombinationDays.add(currentCombination.get(i).getDays());
+				currentCombinationBeginTimes.add(currentCombination.get(i).getBeginTime());
+				currentCombinationEndTimes.add(currentCombination.get(i).getEndTime());
+				currentCombinationLocations.add(currentCombination.get(i).getLocation());
+				
+			}
+			
+			def validCombination = new CombinationInstance(
+				combinationID: (Integer)combinationInstanceService.count() + 1, 
+				combinationClasses: currentCombination,
+				crn: currentCombinationCrns,
+				course: currentCombinationCourses,
+				title: currentCombinationTitles,
+				days: currentCombinationDays,
+				beginTime: currentCombinationBeginTimes,
+				endTime: currentCombinationEndTimes,
+				location: currentCombinationLocations);
+			
 			combinationInstanceService.save(validCombination);
 		}
 	}

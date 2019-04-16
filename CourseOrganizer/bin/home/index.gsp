@@ -30,7 +30,7 @@
 
 <div id="list-combinationInstance" class="content scaffold-list" role="main">
 	<h1>Possible Combinations (total: ${combinationInstanceCount})</h1>
-    <f:table collection="${combinationInstanceList}" except="[]"/>
+    <f:table collection="${combinationInstanceList}" properties="combinationID, combinationClasses, crn, course, title, days, beginTime, endTime, location"/>
 
     <div class="pagination">
          <g:paginate total="${classInstanceCount ?: 0}" />

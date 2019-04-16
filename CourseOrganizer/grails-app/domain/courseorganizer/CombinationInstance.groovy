@@ -3,6 +3,16 @@ package courseorganizer
 class CombinationInstance {
 
 	Integer combinationID
+	
+	List<ClassInstance> combinationClasses
+	List<Integer> crn
+	List<String> course
+	List<String> title
+	List<String> days
+	List<String> beginTime
+	List<String> endTime
+	List<String> location
+	
 	static hasMany = [combinationClasses:ClassInstance, crn:Integer, course:String, title:String, days:String, beginTime:String, endTime:String, location:String]
 	
     static constraints = {
@@ -24,8 +34,4 @@ class CombinationInstance {
 		
 		location nullable: true
     }
-	
-	def updateComplexItems() {
-		
-	}
 }
