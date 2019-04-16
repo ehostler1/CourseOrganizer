@@ -103,7 +103,6 @@ class ClassInstance {
 		//constraints for values for combination generation
 		subjectCourseNumber display: false
 		subjectCourseNumber nullable: true
-		subjectCourseNumber size: 6..6
 		beginTimeMinutes display: false
 		beginTimeMinutes nullable: true
 		beginTimeMinutes range: 1..1440
@@ -184,24 +183,38 @@ class ClassInstance {
 		this.setSubjectCourseNumber(this.subject + this.courseNumber)
 		
 		//update begin and end time minutes
-		Integer minutes = 0
+		Integer minutes = 0;
 		
-		if(this.beginMeridiem == "PM") {
-			minutes += 720
+		if(this.beginMeridiem == "AM") {
+			if(this.beginHour != 12) {
+				minutes += this.beginHour * 60;
+			}
+			minutes += this.beginMinute;
 		}
-		minutes += this.beginHour * 60
-		minutes += this.beginMinute
-		
-		this.setBeginTimeMinutes(minutes)
-		
-		minutes = 0
-		
-		if(this.endMeridiem == "PM") {
-			minutes += 720
+		else {
+			if(this.beginHour != 12) {
+				minutes += this.beginHour * 60;
+			}
+			minutes += this.beginMinute + 720;
 		}
-		minutes += this.endHour * 60
-		minutes += this.endMinute
 		
-		this.setEndTimeMinutes(minutes)
+		this.setBeginTimeMinutes(minutes);
+		
+		minutes = 0;
+		
+		if(this.endMeridiem == "AM") {
+			if(this.endHour != 12) {
+				minutes += this.endHour * 60;
+			}
+			minutes += this.endMinute;
+		}
+		else {
+			if(this.beginHour != 12) {
+				minutes += this.endHour * 60;
+			}
+			minutes += this.endMinute + 720;
+		}
+		
+		this.setEndTimeMinutes(minutes);
 	}
 }
