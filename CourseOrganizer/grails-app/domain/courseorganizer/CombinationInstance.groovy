@@ -3,12 +3,12 @@ package courseorganizer
 class CombinationInstance {
 
 	Integer combinationID
-	static hasMany = [classes:ClassInstance, crn:Integer, course:String, title:String, days:String, beginTime:String, endTime:String, location:String]
+	static hasMany = [combinationClasses:ClassInstance, crn:Integer, course:String, title:String, days:String, beginTime:String, endTime:String, location:String]
 	
     static constraints = {
 		combinationID unique: true
 		
-		classes nullable: true
+		combinationClasses nullable: true
 		
 		crn nullable: true
 		

@@ -15,7 +15,11 @@ class HomeController {
 	}
 	
 	def generateCombinations() {
+		
+		//remove previous combinations
+		
 		//generation code HERE
+		System.out.println("################# BEGINNING GENERATION #################");
 		
 		//first obtain a list of all classes
 		List<ClassInstance> classes = classInstanceService.list(params);
@@ -129,7 +133,9 @@ class HomeController {
 			System.out.println("Attempting to add valid combination to database:"+ currentCombination.toString());
 			def validCombination = new CombinationInstance();
 			validCombination.setCombinationID((Integer)combinationInstanceService.count() + 1);
-			validCombination.addToClasses(currentCombination);
+			
+			//validCombination.addToCombinationClasses(currentCombination.get(0));
+				
 			validCombination.save();
 		}
 	}
