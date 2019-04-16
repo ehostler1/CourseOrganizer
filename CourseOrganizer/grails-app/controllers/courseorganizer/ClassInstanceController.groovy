@@ -66,7 +66,7 @@ class ClassInstanceController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'classInstance.label', default: 'ClassInstance'), classInstance.id])
-                redirect classInstance
+				redirect controller: "home"
             }
             '*'{ respond classInstance, [status: OK] }
         }
@@ -83,7 +83,7 @@ class ClassInstanceController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'classInstance.label', default: 'ClassInstance'), id])
-                redirect action:"index", method:"GET"
+                redirect controller: "home", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
         }
