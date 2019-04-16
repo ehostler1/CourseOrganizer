@@ -216,14 +216,14 @@ class BootStrap {
 			classTwo.save().updateComplexItems()
 			classThree.save().updateComplexItems()
 			classFour.save().updateComplexItems()
-			classFive.save().updateComplexItems()
-			classSix.save().updateComplexItems()
-			classSeven.save().updateComplexItems()
-			classEight.save().updateComplexItems()
-			classNine.save().updateComplexItems()
-			classTen.save().updateComplexItems()
-			classEleven.save().updateComplexItems()
-			classTwelve.save().updateComplexItems()
+			//classFive.save().updateComplexItems()
+			//classSix.save().updateComplexItems()
+			//classSeven.save().updateComplexItems()
+			//classEight.save().updateComplexItems()
+			//classNine.save().updateComplexItems()
+			//classTen.save().updateComplexItems()
+			//classEleven.save().updateComplexItems()
+			//classTwelve.save().updateComplexItems()
 		}
 		
     }
