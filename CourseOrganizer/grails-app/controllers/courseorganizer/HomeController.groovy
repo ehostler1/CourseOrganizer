@@ -126,7 +126,7 @@ class HomeController {
 			}
 			for(int classTwoIndex = 0; classTwoIndex < currentCombination.size() ; classTwoIndex++) {
 				
-				if(!timeDoesNotOverlap(currentCombination.get(classOneIndex), currentCombination.get(classTwoIndex))) {
+				if(classOneIndex != classTwoIndex && !timeDoesNotOverlap(currentCombination.get(classOneIndex), currentCombination.get(classTwoIndex))) {
 					isValid = false
 				}
 			}
@@ -175,25 +175,22 @@ class HomeController {
 		
 		String daysOne = classOne.getDays();
 		String daysTwo = classTwo.getDays();
+		Integer beginOne = classOne.getBeginTimeMinutes();
+		Integer	endOne = classOne.getEndTimeMinutes();
+		Integer beginTwo = classTwo.getBeginTimeMinutes();
+		Integer endTwo = classTwo.getEndTimeMinutes();
 		
-		if(daysOne.contains("M") && daysTwo.contains("M"))
-		(daysOne.contains("T") && daysTwo.contains("T"))||
-		(daysOne.contains("W") && daysTwo.contains("W"))||
-		(daysOne.contains("R") && daysTwo.contains("R"))||
-		(daysOne.contains("F") && daysTwo.contains("F"))||
-		(daysOne.contains("S") && daysTwo.contains("S")){
-			Integer beginOne = classOne.getBeginTimeMinutes();
-			Integer	endOne = classOne.getEndTimeMinutes();
-			Integer beginTwo = classTwo.getBeginTimeMinutes();
-			Integer endTwo = classTwo.getEndTimeMinutes();
-			
-			if((beginOne < beginTwo && endOne > beginTwo)||(beginTwo < beginOne && endTwo > beginOne)) {
+		if(daysOne.contains(daysTwo) || daysTwo.contains(daysOne)) {
+			if((beginOne + endOne)/2 < (beginTwo + endTwo)/2 && endOne > beginTwo) {
+				return false
+			}
+			if((beginOne + endOne)/2 > (beginTwo + endTwo)/2 && endTwo > beginOne) {
 				return false
 			}
 		}
-		else {
-			return true
-		}	
+		
+		return true
+			
 	}
 	
 	def List<Integer> incrementCombinationIndexes(List<Integer> combinationIndexes, List<List<ClassInstance>> separatedClasses){
