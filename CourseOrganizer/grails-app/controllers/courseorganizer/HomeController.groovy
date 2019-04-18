@@ -3,14 +3,29 @@ package courseorganizer
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
+import javax.tools.ForwardingFileObject
+
+import org.grails.web.i18n.ParamsAwareLocaleChangeInterceptor
+
 class HomeController {
 
 	ClassInstanceService classInstanceService
 	CombinationInstanceService combinationInstanceService
 	
-    def index() {
-		respond classInstanceService.list(params), model:[classInstanceCount: classInstanceService.count()]
-		respond combinationInstanceService.list(params), model:[combinationInstanceCount: combinationInstanceService.count()]
+    def index(Integer max) {
+		
+		def classBindingMap
+		def combinationBindingMap
+		
+		if(params.sort == "combinationID") {
+			combinationBindingMap = params
+		}
+		else {
+			classBindingMap = params
+		}
+		
+		respond classInstanceService.list(classBindingMap), model:[classInstanceCount: classInstanceService.count()]
+		respond combinationInstanceService.list(combinationBindingMap), model:[combinationInstanceCount: combinationInstanceService.count()]
 	}
 	
 	def generateCombinations() {
